@@ -37,7 +37,7 @@ func (this *Server) Run(addr string) {
 		Addr:    addr,
 		Handler: mux,
 	}
-	this.logf("berry serving %s\n", addr)
+	this.logf("coral serving %s\n", addr)
 
 	l, err := net.Listen("tcp", addr)
 	if err != nil {
@@ -75,7 +75,7 @@ func (this *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	ctx := &Context{w, r, this}
 	//set some default headers
-	ctx.SetHeader("Server", "berry")
+	ctx.SetHeader("Server", "coral")
 	ctx.SetHeader("Date", webTime(tm))
 
 	router.routeHandler(ctx, r.URL.Path)
